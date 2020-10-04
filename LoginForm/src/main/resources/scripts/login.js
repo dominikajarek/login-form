@@ -25,6 +25,7 @@ function login(data) {
             // user is authenticated, and cookie send by server is set in browser
             console.log(message);
             window.location.href = "hello.html";
+            document.cookie = `user=${JSON.stringify(data)}`;
 
         }).catch(function (error) {
         // user NOT authenticated, server return different status than 200-299

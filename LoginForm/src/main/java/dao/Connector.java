@@ -2,25 +2,24 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Connector {
 
-    protected Connection connection;
-    protected Statement statement;
+    public Connection connection;
+    public Statement statement;
+    private final String url = "jdbc:postgresql://localhost:5432/postgres";
+    private final String user = "postgres";
+    private final String password = "pagaj";
 
-    public void connect() {
+    public Connection connect() {
         try {
-            connection = DriverManager.getConnection(
-                    "jdbc:postgresql://localhost:5432/postgres",
-                    "postgres",
-                    "pagaj"
-            );
-
-            statement = connection.createStatement();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            connection = DriverManager.getConnection(url, user, password);
+            System.out.println("Connected to the PostgreSQL server successfully.");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
         }
+        return connection;
     }
 }
