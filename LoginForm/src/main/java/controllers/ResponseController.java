@@ -11,7 +11,7 @@ public class ResponseController {
         if (status == 200) {
             exchange.getResponseHeaders().put("Content-type", Collections.singletonList("application/json"));
         }
-        exchange.getResponseHeaders().put("Access-Control-Allow-Origin", Collections.singletonList("*"));
+        exchange.getResponseHeaders().put("Access-Control-Allow-Origin", Collections.singletonList("http://localhost:63342"));
         exchange.sendResponseHeaders(status, response.getBytes().length);
 
         OutputStream outputStream = exchange.getResponseBody();

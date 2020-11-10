@@ -42,6 +42,7 @@ public class LoginController implements HttpHandler {
     private void getUserInput(HttpExchange exchange) throws IOException {
         InputStreamReader inputStreamReader = new InputStreamReader(exchange.getRequestBody(), "utf-8");
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
         Map<String, String> body = Parser.parseFormData(bufferedReader.readLine());
 
         String email = body.get("email");
